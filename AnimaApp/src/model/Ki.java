@@ -8,7 +8,7 @@ public class Ki {
     private final int [] increment;
     //AGI, CON, DES, FUE, POD, VOL
     private final int [] max;
-    public boolean flag;
+    private boolean flag;
 
     public Ki(int[] ki_increment, int[] maximun_ki_charges) {
         this.charges = new int [6];
@@ -44,6 +44,10 @@ public class Ki {
         String [] at = {"AGI", "CON", "DES", "FUE", "POD", "VOL"};
         for (int i = 0; i < charges.length; i++) res += at[i]+"\t"+charges[i]+"\t"+increment[i]+"\t"+max[i]+"\n";
         return res;
+    }
+    
+    public boolean gotKi(){
+        return flag;
     }
 
 }

@@ -14,6 +14,7 @@ public abstract class Character {
     public Magic magic;
     public Ki ki;
     public Psiquics psiquics;
+    public Secundary secundary;
 
     public Character(String name, int life, int ah, int damage, int turn, int[] resistances, int zeon, int ki, int psi) {
         this.name = name;
@@ -23,6 +24,7 @@ public abstract class Character {
         this.damage = damage;
         this.turn = turn;
         this.resistances = resistances;
+        secundary = new Secundary(name);
         if(zeon == 0) magic = new Magic();
         else{
             //Aquí ira  un metodo que leerá de un archivo que contendrá los datos de los valores de las magias
@@ -55,7 +57,7 @@ public abstract class Character {
         res += "Life: " + life + " (" + max_life + ")" + "\n";
         res += "AH: " + ah + "\n";
         res += "Dmg: " + damage + "\n";
-        res += ki.flag ? "-----------------------------------------------------\n" + ki.showStatsKi() : "";
+        res += ki.gotKi() ? "-----------------------------------------------------\n" + ki.showStatsKi() : "";
         res += magic.gotMagic() ? "-----------------------------------------------------\n" + magic.showStatsMagic(): "";
         res += psiquics.flag ? "-----------------------------------------------------\n" + psiquics.showStatsPsiquics() : "";
         return res;
@@ -63,6 +65,9 @@ public abstract class Character {
     
     public boolean haveMagic(){
         return this.magic.gotMagic();
+    }
+    public boolean haveKi(){
+        return this.ki.gotKi();
     }
 
 }

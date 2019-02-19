@@ -1,0 +1,3 @@
+P.Fuerza,100
+Acrobacias,10
+Intimidar,15

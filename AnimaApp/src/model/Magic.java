@@ -37,7 +37,7 @@ public class Magic {
     }
     
     public void increment(){
-        zeon = flag ? zeon + zeon_act : 0;
+        if(flag) zeon = flag ? zeon + zeon_act : 0;
     }
     
     public void decrement(){
@@ -45,7 +45,8 @@ public class Magic {
     }
     
     public int dealMagicDamage(int percentage){
-        return (proj_atck*percentage)/100;
+        if(flag)return (proj_atck*percentage)/100;
+        else return 0;
     }
     
     public String showStatsMagic(){
