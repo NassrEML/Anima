@@ -45,6 +45,10 @@ public abstract class Character {
         life = (life + healing) > max_life ? max_life : life + healing;
     }
     
+    public int dealDamage(int percentage){
+        return (damage*percentage)/100;
+    }
+    
     public String showStats(){
         
         String res = "Name: " + name + "\n";
@@ -52,9 +56,13 @@ public abstract class Character {
         res += "AH: " + ah + "\n";
         res += "Dmg: " + damage + "\n";
         res += ki.flag ? "-----------------------------------------------------\n" + ki.showStatsKi() : "";
-        res += magic.flag ? "-----------------------------------------------------\n" + magic.showStatsMagic(): "";
+        res += magic.gotMagic() ? "-----------------------------------------------------\n" + magic.showStatsMagic(): "";
         res += psiquics.flag ? "-----------------------------------------------------\n" + psiquics.showStatsPsiquics() : "";
         return res;
+    }
+    
+    public boolean haveMagic(){
+        return this.magic.gotMagic();
     }
 
 }

@@ -18,7 +18,7 @@ public class HumanCharacter extends Character{
         res += "DH: " + dh + "\n";
         res += "Dmg: " + damage + "\n";
         res += ki.flag ? "-----------------------------------------------------\n" + ki.showStatsKi() : "";
-        res += magic.flag ? "-----------------------------------------------------\n" + magic.showStatsMagic(): "";
+        res += magic.gotMagic() ? "-----------------------------------------------------\n" + magic.showStatsMagic(): "";
         res += psiquics.flag ? "-----------------------------------------------------\n" + psiquics.showStatsPsiquics() : "";
         return res;
     }

@@ -9,7 +9,8 @@ public class Main {
         int [] res = {10,10,10,10,10};
         HumanCharacter hm = new HumanCharacter("Pedro", 150, 50, 20, 2, res, 0, 0, 0, 20);
         
-        System.out.println(hm.showStats());
+        System.out.println(hm.dealDamage(200));
+        
     }
 
 }

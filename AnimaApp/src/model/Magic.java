@@ -4,13 +4,13 @@ public class Magic {
     
     private int zeon_act;
     private int zeon;
-    private int proj_atck;
-    private int proj_def;
-    private int convene;
-    private int domination;
-    private int tie;
-    private int unconvene;
-    public boolean flag;
+    public int proj_atck;
+    public int proj_def;
+    public int convene;
+    public int domination;
+    public int tie;
+    public int unconvene;
+    private boolean flag;
     
     public Magic(int zeon_act, int zeon, int proy_atck, int proy_def, int convene, int domination, int tie, int unconvene) {
         this.zeon_act = zeon_act;
@@ -44,6 +44,10 @@ public class Magic {
         if(flag) zeon = ((zeon - zeon_act) < 0) ? 0 : zeon - zeon_act;
     }
     
+    public int dealMagicDamage(int percentage){
+        return (proj_atck*percentage)/100;
+    }
+    
     public String showStatsMagic(){
         String res = "Magic:\n";
         res += "Zeon act.: " + zeon_act + "\n";
@@ -54,6 +58,10 @@ public class Magic {
         res += "Conv\tDom\tTie\tCaOf" + "\n";
         res += convene + "\t" + domination + "\t" + tie + "\t" + unconvene + "\n";
         return res;
+    }
+    
+    public boolean gotMagic(){
+        return flag;
     }
 
 }
