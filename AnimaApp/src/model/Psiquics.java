@@ -2,17 +2,20 @@ package model;
 
 public class Psiquics {
     
-    public int proj_atck;
-    public int proj_def;
+    private int proj_atck;
+    private int proj_def;
+    public boolean flag;
 
     public Psiquics(int proj_atck, int proj_def) {
         this.proj_atck = proj_atck;
         this.proj_def = proj_def;
+        flag = true;
     }
 
     public Psiquics() {
         proj_atck = 0;
         proj_def = 0;
+        flag = false;
     }
     
     public String showStatsPsiquics(){

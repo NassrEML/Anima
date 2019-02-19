@@ -33,23 +33,27 @@ public abstract class Character {
         }
         if(psi == 0) psiquics = new Psiquics();
         else{
-            //Aquí ira  un metodo que leerá de un archivo que contendrá los datos de los valores del ki
+            //Aquí ira  un metodo que leerá de un archivo que contendrá los datos de los valores del psi
         }
+    }
+    
+    public void loseLife(int damageDeal){
+        life = (life - damageDeal) <= 0 ? 0 : life - damageDeal;
+    }
+    
+    public void heal(int healing){
+        life = (life + healing) > max_life ? max_life : life + healing;
     }
     
     public String showStats(){
         
-        String res = "";
-        res += "Name: " + name + "\n";
+        String res = "Name: " + name + "\n";
         res += "Life: " + life + " (" + max_life + ")" + "\n";
         res += "AH: " + ah + "\n";
         res += "Dmg: " + damage + "\n";
-        res += "-----------------------------------------------------\n";
-        res += ki.showStatsKi();
-        res += "-----------------------------------------------------\n";
-        res += magic.showStatsMagic();
-        res += "-----------------------------------------------------\n";
-        res += psiquics.showStatsPsiquics();
+        res += ki.flag ? "-----------------------------------------------------\n" + ki.showStatsKi() : "";
+        res += magic.flag ? "-----------------------------------------------------\n" + magic.showStatsMagic(): "";
+        res += psiquics.flag ? "-----------------------------------------------------\n" + psiquics.showStatsPsiquics() : "";
         return res;
     }
 
