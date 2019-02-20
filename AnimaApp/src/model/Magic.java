@@ -10,7 +10,7 @@ public class Magic {
     public int domination;
     public int tie;
     public int unconvene;
-    private boolean flag;
+    private final boolean flag;
     
     public Magic(int zeon_act, int zeon, int proy_atck, int proy_def, int convene, int domination, int tie, int unconvene) {
         this.zeon_act = zeon_act;

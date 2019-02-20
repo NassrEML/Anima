@@ -1,14 +1,15 @@
 package model;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Secundary {
     
     private Map<String,Integer> secundary;
+    private boolean negativeStat;
 
-    public Secundary(String name) {
-        secundary = FileReadsWrite.readSecundary(name);
+    public Secundary(String name, boolean flag) {
+        secundary = FileReadsWrite.readSecundaryStats(name);
+        negativeStat = flag;
     }
     
     public int getValue(String skill){
@@ -16,7 +17,7 @@ public class Secundary {
             String key = entry.getKey();
             if(key.equals(skill)) return entry.getValue();
         }
-        return 0;
+        return negativeStat ? -20 : 20 ;
     }
     
     public String showSecundarys(){

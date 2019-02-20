@@ -4,8 +4,8 @@ public class HumanCharacter extends Character{
     
     public int dh;
     
-    public HumanCharacter(String name, int life, int ah, int damage, int turn, int[] resistances, int zeon, int ki, int psi, int dh) {
-        super(name, life, ah, damage, turn, resistances, zeon, ki, psi);
+    public HumanCharacter(String name, int life, int ah, int dh,int damage, int turn, int[] resistances, boolean magic, boolean ki, boolean psi,boolean secNegative) {
+        super(name, life, ah, damage, turn, resistances, magic, ki, psi, secNegative);
         this.dh = dh;
     }
 

@@ -1,0 +1,8 @@
+zeon_act,10
+zeon,100
+proj_atck,80
+proj_def,90
+convene,50
+domination,60
+tie,100
+unconvene,80

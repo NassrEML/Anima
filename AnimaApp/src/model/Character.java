@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Character {
+public abstract class Character implements Comparable{
     
     public String name;
     public int life;
@@ -16,7 +16,7 @@ public abstract class Character {
     public Psiquics psiquics;
     public Secundary secundary;
 
-    public Character(String name, int life, int ah, int damage, int turn, int[] resistances, int zeon, int ki, int psi) {
+    public Character(String name, int life, int ah, int damage, int turn, int[] resistances, boolean magic, boolean ki, boolean psi, boolean secNegative) {
         this.name = name;
         this.life = life;
         this.max_life = life;
@@ -24,16 +24,16 @@ public abstract class Character {
         this.damage = damage;
         this.turn = turn;
         this.resistances = resistances;
-        secundary = new Secundary(name);
-        if(zeon == 0) magic = new Magic();
+        secundary = new Secundary(name,secNegative);
+        if(!magic) this.magic = new Magic();
         else{
-            //Aquí ira  un metodo que leerá de un archivo que contendrá los datos de los valores de las magias
+            this.magic = FileReadsWrite.readMagicStats(name);
         }
-        if(ki == 0) this.ki = new Ki();
+        if(!ki) this.ki = new Ki();
         else{
-            //Aquí ira  un metodo que leerá de un archivo que contendrá los datos de los valores del ki
+            this.ki = FileReadsWrite.readKiStats(name);
         }
-        if(psi == 0) psiquics = new Psiquics();
+        if(!psi) psiquics = new Psiquics();
         else{
             //Aquí ira  un metodo que leerá de un archivo que contendrá los datos de los valores del psi
         }
@@ -70,4 +70,45 @@ public abstract class Character {
         return this.ki.gotKi();
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + this.turn;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Character other = (Character) obj;
+        if(this.turn == other.turn){
+            return this.name.equals(obj);
+        }
+        return false;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(o instanceof Character){
+            Character tmp = (Character) o;
+            return tmp.turn - this.turn;
+        }
+        return -1;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" + "name=" + name + "(" + turn + ")}";
+    }
+
+    
+    
 }
